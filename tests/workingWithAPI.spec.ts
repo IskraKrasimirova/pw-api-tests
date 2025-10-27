@@ -14,11 +14,6 @@ test.beforeEach(async ({ page }) => {
   await page.waitForLoadState('networkidle');
 
   await expect(page.locator('.tag-list .tag-pill', { hasText: 'Playwright' })).toHaveCount(1);
-
-  await page.getByText('Sign in').click();
-  await page.getByRole('textbox', { name: "Email" }).fill('iskra@iskra.com');
-  await page.getByRole('textbox', { name: "Password" }).fill('Secret123');
-  await page.getByRole('button').click();
 });
 
 test('has title', async ({ page }) => {
@@ -71,7 +66,6 @@ test('delete article', async ({ page, request }) => {
   await expect(page.locator('app-article-list h1').first()).not.toContainText('This is a test title');
 
   await page.getByText('Your Feed').click();
-
   await expect(page.locator('app-article-list')).toContainText('No articles are here... yet.');
 });
 
